@@ -17,11 +17,12 @@ RUN apt-get update \
  && sed 's/^-d/# -d/' -i /etc/memcached.conf \
  && rm -rf /var/lib/apt/lists/*
 
-#Adding the Scripts 
+# Adding the Scripts 
 COPY docker-entrypoint.sh /sbin/docker-entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
-USER memcache
+# User configuration
+USER 11211
 
 # Commandline options
 ENTRYPOINT [ "docker-entrypoint.sh" ]
