@@ -19,13 +19,13 @@ RUN apt-get update \
 
 # Adding the Scripts 
 COPY docker-entrypoint.sh /sbin/docker-entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh
+RUN chmod 755 /sbin/docker-entrypoint.sh
 
 # User configuration
-USER 11211
+USER memcache
 
 # Commandline options
-ENTRYPOINT [ "docker-entrypoint.sh" ]
+ENTRYPOINT [ "/sbin/docker-entrypoint.sh" ]
 CMD ["/usr/bin/memcached"]
 
 # Explose the TCP Port only
